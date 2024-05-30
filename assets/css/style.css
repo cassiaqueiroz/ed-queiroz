@@ -826,7 +826,7 @@ section {
 }
 
 .blog .entry .entry-meta {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   color: #777777;
 }
 
@@ -844,15 +844,15 @@ section {
 }
 
 .blog .entry .entry-meta i {
-  font-size: 13px;
-  margin-right: 3px;
+  font-size: 11px;
+  margin-right: 2px;
   line-height: 0;
 }
 
 .blog .entry .entry-meta a {
   color: #777777;
-  font-size: 12px;
-  display: inline;
+  font-size: 10px;
+  display: inline-block;
   line-height: 1;
 }
 
