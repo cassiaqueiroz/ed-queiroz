@@ -1,6 +1,6 @@
 import os
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 # Defina a URL do site que você deseja importar
 url = "https://edqueiroz.com.br"
