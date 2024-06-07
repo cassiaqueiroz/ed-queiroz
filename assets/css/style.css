@@ -9,11 +9,7 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
-=======
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 
 body {
   font-family: "Nunito", sans-serif;
@@ -106,10 +102,6 @@ h6 {
   max-height: 40px;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 /*--------------------------------------------------------------
 # Get Startet Button
 --------------------------------------------------------------*/
@@ -184,11 +176,7 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-<<<<<<< HEAD
 .navbar li:hover > a {
-=======
-.navbar li:hover>a {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   color: #960018;
 }
 
@@ -260,11 +248,7 @@ h6 {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-<<<<<<< HEAD
 .navbar-mobile li:hover > a {
-=======
-.navbar-mobile li:hover>a {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   color: #960018;
 }
 
@@ -299,19 +283,11 @@ h6 {
 
 .navbar-mobile .dropdown ul .active,
 .navbar-mobile .dropdown ul a:hover,
-<<<<<<< HEAD
 .navbar-mobile .dropdown ul li:hover > a {
   color: #960018;
 }
 
 .navbar-mobile .dropdown > .dropdown-active {
-=======
-.navbar-mobile .dropdown ul li:hover>a {
-  color: #960018;
-}
-
-.navbar-mobile .dropdown>.dropdown-active {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   display: block;
 }
 
@@ -322,22 +298,11 @@ h1 {
   color: #fff;
   font-size: 48px;
   font-weight: 700;
-<<<<<<< HEAD
-=======
-
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 #hero {
   width: 100%;
-<<<<<<< HEAD
   background: linear-gradient(0deg, rgb(36, 38, 52) 0%, rgb(0, 0, 0) 0%);
-=======
-  overflow: hidden;
-  position: relative;
-  background: linear-gradient(0deg, rgb(36, 38, 52) 0%, rgb(0, 0, 0) 0%);
-  padding: 0;
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 #hero .carousel-container {
@@ -347,12 +312,7 @@ h1 {
   flex-direction: column;
   text-align: center;
   position: relative;
-<<<<<<< HEAD
-  height: 80vh;
-=======
-  height: 70vh;
-  padding-top: 60px;
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
+  height: 90vh;
 }
 
 #hero h2 {
@@ -370,14 +330,13 @@ h1 {
 
 #hero .carousel-item {
   position: relative;
-<<<<<<< HEAD
   background-image: url("../img/hero-bg.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: left -200% top;
+  background-position: top center;
   height: 90vh;
   width: 100%;
-  opacity: 0.9;
+  opacity: 0.93;
 
 }
 
@@ -387,45 +346,6 @@ h1 {
   width: 100%;
   height: 90vh;
   background-color: rgba(0, 0, 0, 0.45);
-=======
-  background-image: url('../img/hero-bg.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left;
-  top: 5px;
-  height: 80vh;
-  width: 100%; 
-  opacity: 0.9;
-  image-orientation:flip;
-  margin-top: 30px;
-}
-
-
-#hero .carousel-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.42); 
-  z-index: -1;
-}
-
-
-#hero .carousel-control-prev,
-#hero .carousel-control-next {
-  width: 10%;
-}
-
-#hero .carousel-control-next-icon,
-#hero .carousel-control-prev-icon {
-  background: none;
-  font-size: 48px;
-  line-height: 1;
-  width: auto;
-  height: auto;
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 #hero .btn-get-started {
@@ -454,35 +374,17 @@ h1 {
   #hero p {
     width: 60%;
   }
-<<<<<<< HEAD
-=======
-
-  #hero .carousel-control-prev,
-  #hero .carousel-control-next {
-    width: 5%;
-  }
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 @media (max-width: 768px) {
   #hero .carousel-container {
     height: 90vh;
-<<<<<<< HEAD
     width: 100%;
-=======
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   }
 
   #hero .carousel-item {
     background-size: cover;
-<<<<<<< HEAD
     background-position: bottom 50% center;
-=======
-    background-position: top -50% right 50%;
-    background-repeat: no-repeat;
-    height: 80vh;
-    width: 100%; 
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   }
 
   #hero h2 {
@@ -495,11 +397,6 @@ h1 {
   width: 100%;
   height: 60px;
   position: relative;
-<<<<<<< HEAD
-  z-index:initial;
-=======
-  margin-bottom: -20px;
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 .wave1 use {
@@ -636,19 +533,11 @@ section {
   transition: 0.3s;
 }
 
-<<<<<<< HEAD
 .breadcrumbs ol li + li {
   padding-left: 10px;
 }
 
 .breadcrumbs ol li + li::before {
-=======
-.breadcrumbs ol li+li {
-  padding-left: 10px;
-}
-
-.breadcrumbs ol li+li::before {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   display: inline-block;
   padding-right: 10px;
   color: #960018;
@@ -734,11 +623,6 @@ section {
   }
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -791,11 +675,7 @@ section {
   font-weight: 600;
 }
 
-<<<<<<< HEAD
 .contact .php-email-form .error-message br + br {
-=======
-.contact .php-email-form .error-message br+br {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   margin-top: 25px;
 }
 
@@ -851,11 +731,7 @@ section {
   padding: 12px 15px;
 }
 
-<<<<<<< HEAD
 .contact .php-email-form button[type="submit"] {
-=======
-.contact .php-email-form button[type=submit] {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   background: #960018;
   border: 0;
   padding: 10px 32px;
@@ -864,11 +740,7 @@ section {
   border-radius: 40px;
 }
 
-<<<<<<< HEAD
 .contact .php-email-form button[type="submit"]:hover {
-=======
-.contact .php-email-form button[type=submit]:hover {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   background: rgba(150, 0, 24, 0.7);
 }
 
@@ -931,11 +803,7 @@ section {
   margin: 0;
 }
 
-<<<<<<< HEAD
 .blog .entry .entry-meta ul li + li {
-=======
-.blog .entry .entry-meta ul li+li {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   padding-left: 7px;
 }
 
@@ -1053,11 +921,7 @@ section {
   display: inline-block;
 }
 
-<<<<<<< HEAD
 .blog .entry .entry-footer .tags li + li::before {
-=======
-.blog .entry .entry-footer .tags li+li::before {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   padding-right: 6px;
   color: #6c757d;
   content: ",";
@@ -1119,10 +983,6 @@ section {
 .blog .blog-comments .comment {
   margin-top: 30px;
   position: relative;
-<<<<<<< HEAD
-=======
-  
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 .blog .blog-comments .comment .comment-img {
@@ -1235,10 +1095,6 @@ section {
   margin: 0 5px;
   transition: 0.3s;
   border-radius: 50px;
-<<<<<<< HEAD
-=======
-
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
 }
 
 .blog .blog-pagination li a {
@@ -1287,11 +1143,7 @@ section {
   position: relative;
 }
 
-<<<<<<< HEAD
 .blog .sidebar .search-form form input[type="text"] {
-=======
-.blog .sidebar .search-form form input[type=text] {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   border: 0;
   padding: 4px;
   border-radius: 10px;
@@ -1329,11 +1181,7 @@ section {
   padding: 0;
 }
 
-<<<<<<< HEAD
 .blog .sidebar .categories ul li + li {
-=======
-.blog .sidebar .categories ul li+li {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   padding-top: 10px;
 }
 
@@ -1352,11 +1200,7 @@ section {
   font-size: 14px;
 }
 
-<<<<<<< HEAD
 .blog .sidebar .recent-posts .post-item + .post-item {
-=======
-.blog .sidebar .recent-posts .post-item+.post-item {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   margin-top: 15px;
 }
 
@@ -1522,11 +1366,7 @@ section {
   color: #fff;
 }
 
-<<<<<<< HEAD
 #footer .footer-newsletter form input[type="email"] {
-=======
-#footer .footer-newsletter form input[type=email] {
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
   border: 0;
   padding: 4px 8px;
   width: calc(100% - 100px);
@@ -1557,8 +1397,4 @@ section {
   background: #960018;
   color: #fff;
   text-decoration: none;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ba8e5a331b5995b98ca7b4f64d9dc2bcf74de77e
