@@ -312,7 +312,7 @@ h1 {
   flex-direction: column;
   text-align: center;
   position: relative;
-  height: 90vh;
+  height: 80vh;
 }
 
 #hero h2 {
@@ -331,13 +331,12 @@ h1 {
 #hero .carousel-item {
   position: relative;
   background-image: url("../img/hero-bg.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: left -130% bottom;
   height: 90vh;
   width: 100%;
   opacity: 0.93;
-
 }
 
 #hero .carousel-item::before {
@@ -384,7 +383,7 @@ h1 {
 
   #hero .carousel-item {
     background-size: cover;
-    background-position: bottom 50% center;
+    background-position: top 50% center;
   }
 
   #hero h2 {
@@ -393,10 +392,14 @@ h1 {
 }
 
 .hero-waves {
-  display: block;
+  display: inline-block;
   width: 100%;
-  height: 60px;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  height: 6%;
 }
 
 .wave1 use {
