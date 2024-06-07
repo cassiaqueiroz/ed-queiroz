@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 url = "https://cassiaqueiroz.github.io/teste/"
 
 # URL da página de destino
-destination_url = "https://cassiaqueiroz.github.io/ed-queiroz/index.html"
+destination_url = "https://cassiaqueiroz.github.io/ed-queiroz/blog.html"
 
 # Faça uma requisição HTTP para a página de origem
 response = requests.get(url)
