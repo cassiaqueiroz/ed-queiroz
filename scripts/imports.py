@@ -1,39 +1,30 @@
-import os
 import requests
 from bs4 import BeautifulSoup
 
-# Defina a URL do site que você deseja importar
-url = "https://edqueiroz.com.br"
+# URL da página de origem
+url = "https://cassiaqueiroz.github.io/teste/"
 
-# Defina o diretório onde você deseja salvar os posts
-directory = "posts"
+# URL da página de destino
+destination_url = "https://cassiaqueiroz.github.io/ed-queiroz/index.html"
 
-# Verifique se o diretório existe, caso contrário, crie-o
-if not os.path.exists(directory):
-    os.makedirs(directory)
-
-# Faça uma requisição GET para a URL do site
+# Faça uma requisição HTTP para a página de origem
 response = requests.get(url)
 
 # Verifique se a resposta foi bem-sucedida
 if response.status_code == 200:
-    # Parse o conteúdo da resposta como HTML
+    # Parse o conteúdo HTML da página de origem
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Encontre todos os posts no site
+    # Encontre todos os posts na página de origem
     posts = soup.find_all('div', {'class': 'post'})
 
-    # Itere sobre os posts e salve cada um em um arquivo separado
+    # Itere sobre os posts e escreva o conteúdo para a página de destino
     for post in posts:
         title = post.find('h2', {'class': 'title'}).text
         content = post.find('div', {'class': 'content'}).text
 
-        filename = f"{title}.md"
-        filepath = os.path.join(directory, filename)
-
-        # Abra o arquivo em modo de escrita
-        with open(filepath, "w") as file:
-            # Escreva o conteúdo do post no arquivo
-            file.write(f"# {title}\n\n{content}")
+        # Escreva o conteúdo do post para a página de destino
+        with open(destination_url, 'a') as file:
+            file.write(f"<h2>{title}</h2>\n<p>{content}</p>\n\n")
 else:
     print(f"Erro ao baixar conteúdo: {response.status_code}")
