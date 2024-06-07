@@ -333,7 +333,7 @@ h1 {
   background-image: url("../img/hero-bg.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: left -130% bottom;
   height: 90vh;
   width: 100%;
   opacity: 0.93;
