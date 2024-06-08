@@ -324,6 +324,12 @@ h1 {
   padding-left: 40%;
 }
 
+@media (max-width: 768px) {
+  #hero h2 {
+    font-size: 33px;
+  }
+}
+
 #hero h2 {
   color: #fff;
   margin-bottom: 30px;
