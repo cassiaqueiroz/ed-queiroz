@@ -300,6 +300,14 @@ h1 {
   font-weight: 700;
 }
 
+@media (max-width: 768px) {
+  h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 700;
+  }
+}
+
 #hero {
   width: 100%;
   background: linear-gradient(0deg, rgb(36, 38, 52) 0%, rgb(0, 0, 0) 0%);
@@ -314,7 +322,6 @@ h1 {
   position: relative;
   height: 80vh;
   padding-left: 40%;
-
 }
 
 #hero h2 {
@@ -333,7 +340,7 @@ h1 {
 #hero .carousel-item {
   position: relative;
   background-image: url("../img/hero-bg.png");
-  background-size:auto;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: bottom 110% left 110%;
   height: 90vh;
@@ -352,7 +359,7 @@ h1 {
 #hero .btn-get-started {
   font-family: "Nunito", sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 1px;
   display: inline-block;
   padding: 12px 32px;
@@ -383,7 +390,6 @@ h1 {
     width: 100%;
     padding-top: 80%;
     padding-left: 0;
-
   }
 
   #hero .carousel-item {
