@@ -42,7 +42,6 @@
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
-
   </head>
 
   <body>
@@ -80,6 +79,8 @@
       <!-- End Breadcrumbs -->
 
       <!-- ======= Blog Section ======= -->
+      <div id="blog-posts">
+
       <section id="blog" class="blog">
         <div class="container" data-aos="fade-up">
           <div class="row">
@@ -415,6 +416,7 @@
         </div>
       </section>
       <!-- End Blog Section -->
+    </div>
     </main>
     <!-- End #main -->
 
@@ -492,14 +494,17 @@
 
     <!--Firebase-->
     <script type="module">
-      // Import the functions you need from the SDKs you need
+      // Importar as funções necessárias do SDK
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        query,
+        orderBy,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      // Configurações do Firebase do seu projeto
       const firebaseConfig = {
         apiKey: "AIzaSyBtaHdHVmV81V14apptmJ6v9_ZleJKTnGs",
         authDomain: "edqueiroz-br.firebaseapp.com",
@@ -507,12 +512,41 @@
         storageBucket: "edqueiroz-br.appspot.com",
         messagingSenderId: "405351568095",
         appId: "1:405351568095:web:1ac8565069af809b2acf6a",
-        measurementId: "G-26ZTHLFD94"
+        measurementId: "G-26ZTHLFD94",
       };
-    
-      // Initialize Firebase
+
+      // Inicialize o Firebase
       const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+
+      // Função para obter e exibir posts do blog
+      async function displayBlogPosts() {
+        const blogPostsDiv = document.getElementById("blog-posts");
+
+        // Obtenha documentos da coleção "edqueiroz-blog-posts"
+        const q = query(
+          collection(db, "edqueiroz-blog-posts"),
+          orderBy("date", "desc")
+        );
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+          const post = doc.data();
+          const postElement = document.createElement("div");
+          postElement.innerHTML = `
+                  <h2>${post.title}</h2>
+                  <p>${post.content}</p>
+                  <small>By ${post.author} on ${new Date(
+            post.date.seconds * 1000
+          ).toLocaleDateString()}</small>
+                  <hr>
+              `;
+          blogPostsDiv.appendChild(postElement);
+        });
+      }
+
+      // Chame a função para exibir os posts do blog
+      displayBlogPosts();
     </script>
   </body>
 </html>
