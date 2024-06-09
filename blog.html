@@ -39,9 +39,6 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
 
-    <!--Firebase-->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
   </head>
 
   <body>
@@ -79,8 +76,6 @@
       <!-- End Breadcrumbs -->
 
       <!-- ======= Blog Section ======= -->
-      <div id="blog-posts">
-
       <section id="blog" class="blog">
         <div class="container" data-aos="fade-up">
           <div class="row">
@@ -416,7 +411,6 @@
         </div>
       </section>
       <!-- End Blog Section -->
-    </div>
     </main>
     <!-- End #main -->
 
@@ -491,61 +485,5 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
-    <!--Firebase-->
-    <script type="module">
-      // Importar as funções necessárias do SDK
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import {
-        getFirestore,
-        collection,
-        getDocs,
-        query,
-        orderBy,
-      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-      // Configurações do Firebase do seu projeto
-      const firebaseConfig = {
-        authDomain: "edqueiroz-br.firebaseapp.com",
-        projectId: "edqueiroz-br",
-        storageBucket: "edqueiroz-br.appspot.com",
-        messagingSenderId: "405351568095",
-        appId: "1:405351568095:web:1ac8565069af809b2acf6a",
-        measurementId: "G-26ZTHLFD94",
-      };
-
-      // Inicialize o Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      // Função para obter e exibir posts do blog
-      async function displayBlogPosts() {
-        const blogPostsDiv = document.getElementById("blog-posts");
-
-        // Obtenha documentos da coleção "edqueiroz-blog-posts"
-        const q = query(
-          collection(db, "edqueiroz-blog-posts"),
-          orderBy("date", "desc")
-        );
-        const querySnapshot = await getDocs(q);
-
-        querySnapshot.forEach((doc) => {
-          const post = doc.data();
-          const postElement = document.createElement("div");
-          postElement.innerHTML = `
-                  <h2>${post.title}</h2>
-                  <p>${post.content}</p>
-                  <small>By ${post.author} on ${new Date(
-            post.date.seconds * 1000
-          ).toLocaleDateString()}</small>
-                  <hr>
-              `;
-          blogPostsDiv.appendChild(postElement);
-        });
-      }
-
-      // Chame a função para exibir os posts do blog
-      displayBlogPosts();
-    </script>
   </body>
 </html>
