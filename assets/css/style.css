@@ -345,7 +345,7 @@ h1 {
 
 #hero .carousel-item {
   position: relative;
-  background-image: url("../img/ed-hero.jpeg");
+  background-image: url("../img/hero.jpeg");
   background-size: auto;
   background-repeat: no-repeat;
   background-position: bottom 110% left 110%;
@@ -391,17 +391,17 @@ h1 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 912px) {
   #hero .carousel-container {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
-    padding-top: 80%;
+    padding-top: 63%;
     padding-left: 0;
   }
 
   #hero .carousel-item {
     background-size: auto;
-    background-position: bottom 110% center;
+    background-position: bottom 105% center;
   }
 
   #hero h2 {
