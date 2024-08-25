@@ -84,7 +84,6 @@ h6 {
   height: 70px;
   transition: all 0.5s;
   z-index: 997;
-  transition: all 0.5s;
   background: rgba(255, 255, 255, 1);
 }
 
@@ -359,7 +358,7 @@ h1 {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-position: center bottom;
+  background-position: bottom center;
   opacity: 0.93;
   background-size: cover;
 }
@@ -1172,10 +1171,9 @@ section {
   font-size: 16px;
   padding: 0 15px;
   margin: -1px;
-  background: #960018;
+  background-color: #960018;
   color: #fff;
   transition: 0.3s;
-  border-radius: 0 4px 4px 0;
   line-height: 0;
 }
 
