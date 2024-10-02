@@ -1158,6 +1158,7 @@ section {
   padding: 4px;
   border-radius: 10px;
   width: calc(100% - 40px);
+  outline: none;
 }
 
 .blog .sidebar .search-form form button {
