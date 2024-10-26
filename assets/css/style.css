@@ -1396,6 +1396,15 @@ section {
   text-align: center;
 }
 
+#footer .credits a {
+  color: gray;
+  font-weight: 600;
+}
+
+#footer .credits a:hover {
+  color: white;
+}
+
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
