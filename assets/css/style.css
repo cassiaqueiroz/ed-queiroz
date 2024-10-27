@@ -340,12 +340,12 @@ h1 {
 #hero h2 {
   color: #fff;
   margin-bottom: 4rem;
-  font-size: 48px;
+  font-size: 46px;
 }
 
 @media (max-width: 768px) {
   #hero h2 {
-    font-size: 2.6rem;
+    font-size: 2.1rem;
   }
 }
 #hero p {
