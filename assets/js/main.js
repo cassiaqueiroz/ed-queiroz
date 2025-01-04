@@ -313,21 +313,74 @@
   new PureCounter();
 })();
 
-const proxyUrl = 'https://api.allorigins.win/raw?url=';  // Usando outro serviço de proxy
+// URL da API no Vercel
 const apiUrl = 'https://ed-blog-gamma.vercel.app/api/postitems';
 
+// Função para carregar os posts
 async function carregarPosts() {
-  try {
-    const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));  // Usando o novo proxy
-    const data = await response.json();  // Converte a resposta para JSON
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-    if (response.ok) {
-      console.log(data);  // Exibe os posts no console
-      mostrarPosts(data);  // Exibe os posts na página
-    } else {
-      console.error("Erro ao carregar os posts:", data);
+        // Verifica se a resposta foi bem-sucedida
+        if (!response.ok) {
+            console.error(`Erro na resposta da API: ${response.status} - ${response.statusText}`);
+            return;
+        }
+
+        // Tenta converter a resposta em JSON
+        const data = await response.json();
+        console.log('Dados recebidos:', data);
+
+        // Renderiza os posts na página
+        renderizarPosts(data);
+    } catch (error) {
+        console.error('Erro ao carregar os posts:', error);
     }
-  } catch (error) {
-    console.error("Erro ao carregar os posts:", error);
-  }
 }
+
+// Função para renderizar os posts na página
+function renderizarPosts(posts) {
+    const blogContainer = document.querySelector('#blog .row .entries');
+
+    if (!blogContainer) {
+        console.error('Elemento de destino não encontrado na página.');
+        return;
+    }
+
+    // Limpa o container antes de renderizar os novos posts
+    blogContainer.innerHTML = '';
+
+    posts.forEach(post => {
+        const postHtml = `
+            <article class="entry">
+                <div class="entry-img">
+                    <img src="${post.img[0]}" alt="${post.title}" class="img-fluid">
+                </div>
+                <h2 class="entry-title">
+                    <a href="#">${post.title}</a>
+                </h2>
+                <div class="entry-meta">
+                    <ul>
+                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">${post.author || 'Anônimo'}</a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time></a></li>
+                    </ul>
+                </div>
+                <div class="entry-content">
+                    <p>${post.brief || ''}</p>
+                    <div class="read-more">
+                        <a href="#">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+        `;
+        blogContainer.insertAdjacentHTML('beforeend', postHtml);
+    });
+}
+
+// Chama a função para carregar os posts
+carregarPosts();
