@@ -312,3 +312,22 @@
    */
   new PureCounter();
 })();
+
+const proxyUrl = 'https://api.allorigins.win/raw?url=';  // Usando outro serviço de proxy
+const apiUrl = 'https://ed-blog-gamma.vercel.app/api/postitems';
+
+async function carregarPosts() {
+  try {
+    const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));  // Usando o novo proxy
+    const data = await response.json();  // Converte a resposta para JSON
+
+    if (response.ok) {
+      console.log(data);  // Exibe os posts no console
+      mostrarPosts(data);  // Exibe os posts na página
+    } else {
+      console.error("Erro ao carregar os posts:", data);
+    }
+  } catch (error) {
+    console.error("Erro ao carregar os posts:", error);
+  }
+}
