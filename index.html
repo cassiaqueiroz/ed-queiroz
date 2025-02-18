@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>edQueiroz</title>
+    <title>ALÔFOZ.tv</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link href="assets/css/animate.min.css" rel="stylesheet">
@@ -16,9 +16,10 @@
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet">
 
     <!-- Vendor CSS Files -->
@@ -49,18 +50,21 @@
     <header id="header" class="fixed-top d-flex align-items-center">
       <div class="container d-flex align-items-center">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>
+        <a href="index.html" class="logo me-auto"><img src="assets/img/logo-no-bg.png" alt=""></a>
 
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
-            <li><a class="nav-link active" href="index.html">Início</a></li>
-            <li><a class="nav-link" href="https://ed-blog-gamma.vercel.app/">Blog</a></li>
-            <li><a class="nav-link" href="#about" target="_blank">Sobre mim</a></li>
-
-
+            <li><a class="nav-link scrollto" href="#hero">Início</a></li>
+            <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
+            <li><a class="nav-link scrollto" href="https://www.edqueiroz.com.br/">Notícias</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
+
+        <a href="https://wa.me/message/OYPXJX7QIM72I1" class="appointment-btn scrollto m-3">
+          <span class="d-none d-lg-inline-flex">Entre em</span> Contato
+          <i class="bi bi-whatsapp d-lg-inline d-xl-inline" style="margin-left: 5px; font-size: medium;"></i>
+        </a>
 
       </div>
     </header><!-- End Header -->
@@ -71,114 +75,35 @@
         <!-- Slide 1 -->
         <div class="carousel-item active">
           <div class="carousel-container__text">
-            <h1 class="animate__animated animate__fadeInDown"><span>edQueiroz</span></h1>
-            <h2 class="animate__animated fanimate__adeInUp">Eu te conto!</h2>
-            <a href="#blog" class="btn-get-started animate__animated animate__fadeInUp scrollto">Leia Meu
-              Último Post</a>
+
+
           </div>
         </div>
 
+        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 120 28" preserveAspectRatio="none">
+          <defs>
+            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="wave1">
+            <use xlink:href="#wave-path" x="10" y="-2" fill="#22B7F2" />
+          </g>
+          <g class="wave2">
+            <use xlink:href="#wave-path" x="10" y="0" fill="#7ED958" />
+          </g>
+          <g class="wave3">
+            <use xlink:href="#wave-path" x="10" y="9" fill="#FD7400" />
+          </g>
+        </svg>
 
-
-
-      </div>
-
-      <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 120 28 " preserveAspectRatio="none">
-        <defs>
-          <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-        </defs>
-        <g class="wave1">
-          <use xlink:href="#wave-path" x="10" y="-2" fill="rgba(255,255,255, 0.1)">
-        </g>
-        <g class="wave2">
-          <use xlink:href="#wave-path" x="10" y="0" fill="rgba(0,0,0, 0.97)">
-        </g>
-        <g class="wave3">
-          <use xlink:href="#wave-path" x="10" y="9" fill="rgba(255,255,255, .9)">
-        </g>
-      </svg>
 
     </section><!-- End Hero -->
 
 
     <main id="main">
 
-      <section id="blog" class="blog">
-        <div class="container" data-aos="fade-up">
-          <div class="row">
-            <div class="col-lg-8 entries" id="blog-entries" hx-get="https://ed-blog-gamma.vercel.app/api/postitems"
-              hx-target="#blog-entries" hx-swap="innerHTML" hx-trigger="load">
-              <!-- O conteúdo será injetado automaticamente aqui assim que a página for carregada -->
-            </div>
-            <div class="col-lg-4">
-              <div class="sidebar">
-                <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="151505"
-                  view-url="https://widget.tagembed.com/151505"></div>
-                <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-              </div><!-- End sidebar -->
-            </div><!-- End blog sidebar -->
-          </div>
-        </div>
 
-        <!-- Template para os posts -->
-        <template id="post-template">
-          <div class="post-entry">
-            <a href="" class="thumbnail">
-              <img src="" alt="" class="img-fluid" width="500" height="300">
-            </a>
-            <div class="post-meta">
-              <span class="category"></span>
-              <span class="mx-1"><i class="bi bi-dot"></i></span>
-              <span class="date"></span>
-            </div>
-            <h2>
-              <a href="" class="post-title"></a>
-            </h2>
-            <p class="brief"></p>
-            <div class="author d-flex align-items-center">
-              <div class="photo">
-                <img src="" alt="" class="img-fluid" width="50" height="50">
-              </div>
-              <div class="name">
-                <h3 class="m-0 p-0 author-name"></h3>
-              </div>
-            </div>
-          </div>
-        </template>
-      </section><!-- End Blog Section -->
 
-      <script>
-        document.addEventListener("htmx:afterSwap", function (event) {
-          if (event.target.id === "blog-entries") {
-            const posts = JSON.parse(event.detail.xhr.responseText);
-            const postContainer = document.getElementById("blog-entries");
-
-            posts.forEach(post => {
-              // Obtém o template e cria uma cópia para cada post
-              const template = document.getElementById("post-template");
-              const postElement = template.content.cloneNode(true);
-
-              // Preenche os dados do post no template
-              postElement.querySelector(".thumbnail a").href = `/postitems/${post._id}`;
-              postElement.querySelector(".thumbnail img").src = post.img[0];  // Assumindo que post.img é um array
-              postElement.querySelector(".thumbnail img").alt = post.title;
-              postElement.querySelector(".category").textContent = post.category;
-              postElement.querySelector(".date").textContent = new Date(post.date).toLocaleDateString('pt-BR');
-              postElement.querySelector(".post-title").textContent = post.title;
-              postElement.querySelector(".post-title").href = `/postitems/${post._id}`;
-              postElement.querySelector(".brief").textContent = post.brief;
-              postElement.querySelector(".author-name").textContent = post.author;
-              postElement.querySelector(".photo img").src = post.avatar;  // Assumindo que post.avatar é a URL da imagem
-              postElement.querySelector(".photo img").alt = post.author;
-
-              // Adiciona o post renderizado no container
-              postContainer.appendChild(postElement);
-            });
-          }
-        });
-      </script>
 
 
       <!-- ======= About Section ======= -->
@@ -187,31 +112,24 @@
 
           <div class="row no-gutters">
 
-            <div
-              class="col-xl-5 col-lg-5 d-flex flex-column justify-content-center align-items-center position-relative">
-              <img src="./assets/img/about.jpeg" data-aos="fade-right" alt=""
-                style="max-width: 70%; border-radius: 80%; border: 4px solid #960018"><br>
 
-            </div>
 
             <div
-              class="col-xl-6 col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative">
+              class="col-xl-12 col-lg-12 d-flex flex-column justify-content-center align-items-center position-relative">
               <div class="content">
 
-                <h3>Sobre mim</h3>
-                <p> <strong>Fofoqueiro não, jornalista!</strong>
+                <h3>Sobre nós</h3>
                 </p>
                 <p>
-                  Criar conteúdo é a parte fácil. Conseguir pessoas para ler e compartilhar é um assunto totalmente
-                  diferente, é por isso que aqui você vai encontrar um conteúdo totalmente fora da curva, tudo isso com
-                  responsabilidade, claro!</p>
-                <p> <strong>Me chamo Ed Queiroz, sou jornalista, radialista e, nas horas vagas, pitaqueiro.</strong>
-                </p>
-                <p>Sou o jornalista político mais lido e com mais engajamento nas mídias sociais da fronteira,
-                  alcançando mais de 200 mil pessoas mensalmente.
-                </p>
-                <p>Com meu jeito polêmico e não convencional, vou contrastando com humor o dia-a-dia das mazelas
-                  iguaçuenses.
+                  Chegou o canal que Foz do Iguaçu precisava! <strong>ALÔFOZ.tv</strong> vem para mudar o jogo da
+                  comunicação, trazendo
+                  notícias quentes, polêmicas, denúncias, dicas e muito entretenimento, tudo sem censura e sem medo de
+                  falar a verdade.</p>
+                <p>Aqui, a informação chega sem rodeios e com a energia que a cidade merece. Estamos ao vivo de segunda
+                  a quinta, das <strong>12h às 13:30</strong>, e sempre prontos para entrar no ar a qualquer momento com
+                  o nosso giro de
+                  notícias.</p>
+                <p>Se aconteceu, tá no <strong>ALÔFOZ.tv</strong> !
                 </p>
               </div>
             </div>
@@ -229,18 +147,15 @@
             <div class="col-lg-12 col-md-6 footer-contact text-center">
               <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>
 
-              <h3>edQueiroz</h3><br>
+              <h3>ALÔFOZ.tv</h3><br>
               <p>
-                <strong>Telefone:</strong> <a href="tel:+554599932718">Ligar para (45) 9993-2718</a><br>
+                <strong>Telefone:</strong> (45) 9993-2718<br>
                 <strong>E-mail:</strong> contatoediqueiroz@gmail.com<br>
               </p>
             </div>
             <div class="social-links text-center">
-              <a href="https://api.whatsapp.com/send?phone=554599932718" class="whatsapp"><i
-                  class="bi bi-whatsapp"></i></a>
-              <a href="hhttps://www.facebook.com/sigaed" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="https://www.instagram.com/sigaedqueiroz/" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.twitter.com/sigaeq" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://wa.me/message/OYPXJX7QIM72I1" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+              <a href="https://www.instagram.com/alofoz.tv/" class="instagram"><i class="bx bxl-instagram"></i></a>
             </div>
 
 
