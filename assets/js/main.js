@@ -1,152 +1,386 @@
+/**
+ * Template Name: Presento
+ * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+ * Updated: Mar 17 2024 with Bootstrap v5.3.3
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 (function () {
   "use strict";
 
   /**
-   * Função auxiliar para selecionar elementos
+   * Easy selector helper function
    */
   const select = (el, all = false) => {
-    return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
+    el = el.trim();
+    if (all) {
+      return [...document.querySelectorAll(el)];
+    } else {
+      return document.querySelector(el);
+    }
   };
 
   /**
-   * Adiciona eventos facilmente a elementos
+   * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
-    let elements = select(el, all);
-    if (elements) {
+    let selectEl = select(el, all);
+    if (selectEl) {
       if (all) {
-        elements.forEach((e) => e.addEventListener(type, listener));
+        selectEl.forEach((e) => e.addEventListener(type, listener));
       } else {
-        elements.addEventListener(type, listener);
+        selectEl.addEventListener(type, listener);
       }
     }
   };
 
   /**
-   * Alterna entre navegação desktop e mobile
+   * Easy on scroll event listener
    */
-  const updateNavbarMode = () => {
-    let navbar = select("#navbar");
-    if (window.innerWidth > 991) {
-      navbar.classList.remove("navbar-mobile");
-    }
+  const onscroll = (el, listener) => {
+    el.addEventListener("scroll", listener);
   };
-  window.addEventListener("resize", updateNavbarMode);
-  window.addEventListener("load", updateNavbarMode);
 
   /**
-   * Alterna o menu mobile
+   * Navbar links active state on scroll
    */
-  on("click", ".mobile-nav-toggle", function () {
+  let navbarlinks = select("#navbar .scrollto", true);
+  const navbarlinksActive = () => {
+    let position = window.scrollY + 200;
+    navbarlinks.forEach((navbarlink) => {
+      if (!navbarlink.hash) return;
+      let section = select(navbarlink.hash);
+      if (!section) return;
+      if (
+        position >= section.offsetTop &&
+        position <= section.offsetTop + section.offsetHeight
+      ) {
+        navbarlink.classList.add("active");
+      } else {
+        navbarlink.classList.remove("active");
+      }
+    });
+  };
+  window.addEventListener("load", navbarlinksActive);
+  onscroll(document, navbarlinksActive);
+
+  /**
+   * Scrolls to an element with header offset
+   */
+  const scrollto = (el) => {
+    let header = select("#header");
+    let offset = header.offsetHeight;
+
+    if (!header.classList.contains("header-scrolled")) {
+      offset -= 16;
+    }
+
+    let elementPos = select(el).offsetTop;
+    window.scrollTo({
+      top: elementPos - offset,
+      behavior: "smooth",
+    });
+  };
+
+  /**
+   * Toggle .header-scrolled class to #header when page is scrolled
+   */
+  let selectHeader = select("#header");
+  if (selectHeader) {
+    const headerScrolled = () => {
+      if (window.scrollY > 100) {
+        selectHeader.classList.add("header-scrolled");
+      } else {
+        selectHeader.classList.remove("header-scrolled");
+      }
+    };
+    window.addEventListener("load", headerScrolled);
+    onscroll(document, headerScrolled);
+  }
+
+  /**
+   * Back to top button
+   */
+  let backtotop = select(".back-to-top");
+  if (backtotop) {
+    const toggleBacktotop = () => {
+      if (window.scrollY > 100) {
+        backtotop.classList.add("active");
+      } else {
+        backtotop.classList.remove("active");
+      }
+    };
+    window.addEventListener("load", toggleBacktotop);
+    onscroll(document, toggleBacktotop);
+  }
+
+  /**
+   * Mobile nav toggle
+   */
+  on("click", ".mobile-nav-toggle", function (e) {
     select("#navbar").classList.toggle("navbar-mobile");
     this.classList.toggle("bi-list");
     this.classList.toggle("bi-x");
   });
 
   /**
-   * Fecha o menu mobile ao clicar em um link
+   * Mobile nav dropdowns activate
    */
-  on("click", ".scrollto", function (e) {
-    let navbar = select("#navbar");
-    if (select(this.hash)) {
-      e.preventDefault(); // Impede o comportamento padrão do link
-      if (navbar.classList.contains("navbar-mobile")) {
-        navbar.classList.remove("navbar-mobile");
-        select(".mobile-nav-toggle").classList.toggle("bi-list");
-        select(".mobile-nav-toggle").classList.toggle("bi-x");
+  on(
+    "click",
+    ".navbar .dropdown > a",
+    function (e) {
+      if (select("#navbar").classList.contains("navbar-mobile")) {
+        e.preventDefault();
+        this.nextElementSibling.classList.toggle("dropdown-active");
       }
-      scrollto(this.hash); // Rola até a seção
-    }
-  }, true);
+    },
+    true
+  );
 
   /**
-   * Alterna os dropdowns no menu mobile
+   * Scrool with ofset on links with a class name .scrollto
    */
-  on("click", ".navbar .dropdown > a", function (e) {
-    if (select("#navbar").classList.contains("navbar-mobile")) {
-      e.preventDefault();
-      this.nextElementSibling.classList.toggle("dropdown-active");
-    }
-  }, true);
+  on(
+    "click",
+    ".scrollto",
+    function (e) {
+      if (select(this.hash)) {
+        e.preventDefault();
 
-  /**
-   * Atualiza navbar links ativos ao rolar a página
-   */
-  const navbarlinks = select("#navbar .scrollto", true);
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200;
-    navbarlinks.forEach((link) => {
-      if (!link.hash) return;
-      let section = select(link.hash);
-      if (!section) return;
-
-      // Se a posição da página estiver dentro da seção
-      if (position >= section.offsetTop && position <= section.offsetTop + section.offsetHeight) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
+        let navbar = select("#navbar");
+        if (navbar.classList.contains("navbar-mobile")) {
+          navbar.classList.remove("navbar-mobile");
+          let navbarToggle = select(".mobile-nav-toggle");
+          navbarToggle.classList.toggle("bi-list");
+          navbarToggle.classList.toggle("bi-x");
+        }
+        scrollto(this.hash);
       }
-    });
-
-    // Garante que "Início" seja ativado apenas quando estiver no topo da página
-    let homeLink = select('a[href="index.html"]');
-    if (window.scrollY === 0) {
-      homeLink.classList.add("active"); // Ativa o "Início" no topo
-    } else {
-      homeLink.classList.remove("active"); // Remove a classe active quando não estiver no topo
-    }
-  };
-
-  window.addEventListener("load", navbarlinksActive);
-  document.addEventListener("scroll", navbarlinksActive);
+    },
+    true
+  );
 
   /**
-   * Rola suavemente até uma seção
-   */
-  const scrollto = (el) => {
-    let header = select("#header");
-    let offset = header.offsetHeight - (header.classList.contains("header-scrolled") ? 0 : 16);
-    let elementPos = select(el).offsetTop;
-    window.scrollTo({ top: elementPos - offset, behavior: "smooth" });
-  };
-
-  /**
-   * Configuração do Swiper
-   */
-  const initSwiper = (selector, config) => {
-    if (select(selector)) {
-      new Swiper(selector, config);
-    }
-  };
-
-  initSwiper(".clients-slider", {
-    speed: 400,
-    loop: true,
-    autoplay: { delay: 5000, disableOnInteraction: false },
-    slidesPerView: "auto",
-    pagination: { el: ".swiper-pagination", clickable: true },
-    breakpoints: { 320: { slidesPerView: 2 }, 640: { slidesPerView: 4 }, 992: { slidesPerView: 6 } }
-  });
-
-  initSwiper(".testimonials-slider", {
-    speed: 600,
-    loop: true,
-    autoplay: { delay: 5000, disableOnInteraction: false },
-    slidesPerView: "auto",
-    pagination: { el: ".swiper-pagination", clickable: true },
-    breakpoints: { 320: { slidesPerView: 1 }, 1200: { slidesPerView: 3 } }
-  });
-
-  /**
-   * Inicia animações ao rolar a página
+   * Scroll with ofset on page load with hash links in the url
    */
   window.addEventListener("load", () => {
-    AOS.init({ duration: 1000, easing: "ease-in-out", once: true, mirror: false });
+    if (window.location.hash) {
+      if (select(window.location.hash)) {
+        scrollto(window.location.hash);
+      }
+    }
+  });
+  /**
+   * Clients Slider
+   */
+  new Swiper(".clients-slider", {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: "auto",
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+      480: {
+        slidesPerView: 3,
+        spaceBetween: 60,
+      },
+      640: {
+        slidesPerView: 4,
+        spaceBetween: 80,
+      },
+      992: {
+        slidesPerView: 6,
+        spaceBetween: 120,
+      },
+    },
   });
 
   /**
-   * Contador animado
+   * Porfolio isotope and filter
+   */
+  window.addEventListener("load", () => {
+    let portfolioContainer = select(".portfolio-container");
+    if (portfolioContainer) {
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: ".portfolio-item",
+        layoutMode: "fitRows",
+      });
+
+      let portfolioFilters = select("#portfolio-flters li", true);
+
+      on(
+        "click",
+        "#portfolio-flters li",
+        function (e) {
+          e.preventDefault();
+          portfolioFilters.forEach(function (el) {
+            el.classList.remove("filter-active");
+          });
+          this.classList.add("filter-active");
+
+          portfolioIsotope.arrange({
+            filter: this.getAttribute("data-filter"),
+          });
+          portfolioIsotope.on("arrangeComplete", function () {
+            AOS.refresh();
+          });
+        },
+        true
+      );
+    }
+  });
+
+  /**
+   * Initiate portfolio lightbox
+   */
+  const portfolioLightbox = GLightbox({
+    selector: ".portfolio-lightbox",
+  });
+
+  /**
+   * Portfolio details slider
+   */
+  new Swiper(".portfolio-details-slider", {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+  });
+
+  /**
+   * Testimonials slider
+   */
+  new Swiper(".testimonials-slider", {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: "auto",
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    },
+  });
+
+  /**
+   * Animation on scroll
+   */
+  window.addEventListener("load", () => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  });
+
+  /**
+   * Initiate Pure Counter
    */
   new PureCounter();
-
 })();
+
+// URL da API no Vercel
+const apiUrl = 'https://ed-blog-gamma.vercel.app/api/postitems';
+
+// Função para carregar os posts
+async function carregarPosts() {
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Verifica se a resposta foi bem-sucedida
+        if (!response.ok) {
+            console.error(`Erro na resposta da API: ${response.status} - ${response.statusText}`);
+            return;
+        }
+
+        // Tenta converter a resposta em JSON
+        const data = await response.json();
+        console.log('Dados recebidos:', data);
+
+        // Renderiza os posts na página
+        renderizarPosts(data);
+    } catch (error) {
+        console.error('Erro ao carregar os posts:', error);
+    }
+}
+
+// Função para renderizar os posts na página
+function renderizarPosts(posts) {
+    const blogContainer = document.querySelector('#blog .row .entries');
+
+    if (!blogContainer) {
+        console.error('Elemento de destino não encontrado na página.');
+        return;
+    }
+
+    // Limpa o container antes de renderizar os novos posts
+    blogContainer.innerHTML = '';
+
+    posts.forEach(post => {
+        const postHtml = `
+            <article class="entry">
+                <div class="entry-img">
+                    <img src="${post.img[0]}" alt="${post.title}" class="img-fluid">
+                </div>
+                <h2 class="entry-title">
+                    <a href="#">${post.title}</a>
+                </h2>
+                <div class="entry-meta">
+                    <ul>
+                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">${post.author || 'Anônimo'}</a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time></a></li>
+                    </ul>
+                </div>
+                <div class="entry-content">
+                    <p>${post.brief || ''}</p>
+                    <div class="read-more">
+                        <a href="#">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+        `;
+        blogContainer.insertAdjacentHTML('beforeend', postHtml);
+    });
+}
+
+// Chama a função para carregar os posts
+carregarPosts();
